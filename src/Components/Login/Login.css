@@ -9,6 +9,14 @@
     margin-bottom: 15px;
     
 }
+.login-form-style button{
+    padding: 5px 10px;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+}
 .login-form-style{
     display: flex;
     justify-content: center;

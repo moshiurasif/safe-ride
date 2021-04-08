@@ -18,6 +18,9 @@ const Login = () => {
     let { from } = location.state || { from: { pathname: "/" } };
   const [loggedInUser, setLoggedInUser] = useContext(userContext);
   const [createUser, setCreateUser] = useState(false);
+  const [isNewUser, setIsNewUser] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -87,6 +90,38 @@ const Login = () => {
         });
     }
   };
+  var provider = new firebase.auth.GoogleAuthProvider();
+  const handleGoogleLogin = () => {
+    firebase
+      .auth()
+      .signInWithPopup(provider)
+      .then((result) => {
+        var credential = result.credential;
+        var token = credential.accessToken;
+
+        const userInfo = result.user;
+        const newUser = { ...user };
+        console.log("successful", userInfo);
+        newUser.name = userInfo.displayName;
+        newUser.email = userInfo.email;
+        newUser.isValidUser = true;
+        setUser(newUser);
+        setSuccess("You are Successfully LoggedIn");
+        setError("");
+        history.replace(from);
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+
+        var email = error.email;
+
+        var credential = error.credential;
+        setSuccess("");
+        setError(errorMessage);
+      });
+    // event.preventDefault();
+  };
 
   return (
     <div className="container">
@@ -140,6 +175,22 @@ const Login = () => {
                 user {createUser ? "created" : "Logged In Successfully"}
               </p>
             )}
+          </div>
+        </div>
+        <div className="col-md-12">
+          <div className="login-form-style">
+            <button onClick={handleGoogleLogin} className="login-button">
+              <span>
+                <img
+                  className="text-left"
+                  width="20"
+                  src="https://i.ibb.co/TgdQSf5/Group-573.png"
+                  alt="Group-573"
+                  border="0"
+                />
+              </span>
+              continue with google
+            </button>
           </div>
         </div>
       </div>
