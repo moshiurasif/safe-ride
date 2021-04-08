@@ -1,4 +1,4 @@
-<a href="">Safe Ride Live Website</a>
+<h1><a href="">Safe Ride Live Website Link</a></h1>
 <h1>About App</h1>
 <ul>
 <li>Implements firebase google , github and gmail-password authentication with error handling.</li>
