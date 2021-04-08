@@ -1,0 +1,27 @@
+.box-style{
+    width:250px;
+    height:250px;
+    background:white;
+    border-radius:10px;
+    margin: 10px;
+    padding:20px;
+    text-align: center;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    -ms-border-radius:10px;
+    -o-border-radius:10px;
+    transition:0.2s ease-in-out;
+    -webkit-transition:0.2s ease-in-out;
+    -moz-transition:0.2s ease-in-out;
+    -ms-transition:0.2s ease-in-out;
+    -o-transition:0.2s ease-in-out;
+}
+.box-style h2{
+    margin-top: 10px;
+    
+}
+
+.box-style:hover{
+    box-shadow: 0px 0px 20px 5px cadetblue;
+    
+}
